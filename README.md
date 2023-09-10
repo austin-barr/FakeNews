@@ -53,7 +53,7 @@ assert os.path.abspath(__file__).endswith("constants.py"), (
 ```python
 mk.config.display.max_rows = page_size
 ```
-- Line 180 of *`domino/gui.py*` should be changed to:
+- Line 180 of *`domino/gui.py`* should be changed to:
 ```python
 dp[
 ```

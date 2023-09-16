@@ -210,7 +210,6 @@ for ds in datasets:
             # counts the number of splits of exclude that have been used
             step = 0
             while step <= num_splits or Net.base:
-                print(step, num_splits, Net.base)
                 val_losses = [0] * epochs
                 train_losses = [0] * epochs
                 val_accuracies = [0] * epochs

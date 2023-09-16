@@ -233,7 +233,7 @@ for ds in datasets:
                 if torch.cuda.is_available():
                     torch.cuda.manual_seed(args.seed)
                 
-                dataset = FNNDataset(root='data/', feature=args.feature, empty=False, name=args.dataset,
+                dataset = FNNDataset(root='data', feature=args.feature, empty=False, name=args.dataset,
                                      transform=DropEdge(args.TDdroprate, args.BUdroprate))
                 
                 args.num_classes = dataset.num_classes

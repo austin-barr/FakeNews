@@ -1,0 +1,9 @@
+gnn/last_run
+gnn/slices
+gnn/saved_features
+gnn/graphs
+gnn/data/politifact
+gnn/data/gossipcop
+gnn/slice_performance_log.txt
+gnn/performance_log.txt
+*.pyc

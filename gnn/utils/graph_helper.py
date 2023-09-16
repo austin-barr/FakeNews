@@ -1,3 +1,5 @@
+import os
+
 import matplotlib.pyplot as plt
 import networkx as nx
 import numpy as np
@@ -21,17 +23,17 @@ class GraphHelper():
         self.dataset = dataset
         self.num_graphs = 314 if self.dataset=='politifact' else 5464
         
-        folder = f'data/{self.dataset}/raw/'
+        folder = f'../data/{self.dataset}/raw/'
         # Edges for each graph as node pairs
         self.edge_index = read_file(folder, 'A', torch.long)
         # Graph number for each node
         self.node_graph_id = np.load(folder + 'node_graph_id.npy').tolist()
         # UNIX timestamp for each retweet node
-        timestamps = np.load(f'data/{self.dataset[0:3]}_id_time_mapping.pkl', allow_pickle=True)
+        timestamps = np.load(f'../data/{self.dataset[0:3]}_id_time_mapping.pkl', allow_pickle=True)
         # Since there aren't timestamps for root nodes, replace the root's time with the first retweet's time
         self.timestamps = np.array([(int(timestamps[i]) if timestamps[i] != '' else int(timestamps[i+1])) for i in range(len(timestamps))])
         
-        node_attributes = sp.load_npz(f'data/{self.dataset}/raw/new_profile_feature.npz')
+        node_attributes = sp.load_npz(folder + 'new_profile_feature.npz')
         self.profile_features = np.array(node_attributes.todense())
         
     def get_bounds(self, graph_label):
@@ -190,7 +192,7 @@ class GraphHelper():
         
         return avg_feature
     
-    def draw_graph(self, graph_label, color_times=True):
+    def draw_graph(self, graph_label, color_times=True, save=True, dpi=400, file_type='png', with_labels=True):
         '''Draws a networkx graph of an FNN graph
         
         Parameters
@@ -199,6 +201,15 @@ class GraphHelper():
             graph label of graph to draw
         color_times : bool, optional
             Whether to use node timestamps to color nodes (default True)
+        save : bool, optional
+            Whether to save the graph (default is True)
+        dpi : int, optional
+            Dots per inch of the graph (default is 200)
+        file_type : str, optional
+            File type for the saved graph
+            Any file type supported by matplotlib.plyplot.savefig() (default is 'png')
+        with_labels : bool, optional
+            Whether to number each node in the graph (default is True)
         '''
         
         G = nx.Graph()
@@ -219,8 +230,10 @@ class GraphHelper():
             
             nx.draw(G, ax=ax, pos=pos, node_color=c, cmap=cmap, with_labels=True, node_size=[[1000]*len(G.nodes)])
         else:
-            nx.draw(G, ax=ax, pos=pos, with_labels=True, node_size=[[1000]*len(G.nodes)])
-        
-        plt.savefig(f'graphs/{self.dataset}/{graph_label}.png', dpi=200)
+            nx.draw(G, ax=ax, pos=pos, with_labels=with_labels, node_size=[[1000]*len(G.nodes)])
+            
+        if save:
+            os.makedirs(f'../graphs/{self.dataset}', exist_ok=True)
+            plt.savefig(f'../graphs/{self.dataset}/{graph_label}.{file_type}', dpi=dpi)
         
         plt.show()

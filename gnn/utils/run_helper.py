@@ -624,7 +624,7 @@ def get_exclude(dataset, emb, pred, graph_labels, num_exclude, dim_reduction=Non
     if dataset == 'politifact':
         num_graphs = 314
     elif dataset == 'gossipcop':
-        num_graphs == 5464
+        num_graphs = 5464
     class_labels = [0 if i < num_graphs/2 else 1 for i in graph_labels]
     class_labels = np.array(class_labels)
     

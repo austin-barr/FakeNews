@@ -110,8 +110,8 @@ features = ["profile", "content", "spacy", "bert"]
 model_types = ["gcn", "gat", "sage"]
 '''
 # which dataset/model/feature(s) to run
-datasets = ["politifact"]
-features = ["profile"]
+datasets = ["gossipcop"]
+features = ["content"]
 models = ["gcn"]
 
 # How many groups exclude is split into for gradual removal

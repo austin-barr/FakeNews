@@ -145,8 +145,8 @@ if feature in profile_feature_names:
 else:
     is_profile = False
 
-y_label = ''
+y_label = 'days'
 ra.slice_analysis(feature, feature_dict, slices, is_profile=is_profile, y_label=y_label)
 
 '''Domino explore feature, meant to run in Jupyter notebook'''
-ra.domino_explore(slices)
+# ra.domino_explore(slices)

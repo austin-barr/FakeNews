@@ -158,8 +158,8 @@ datasets = ["politifact", "gossipcop"]
 features = ["profile", "content", "spacy", "bert"]
 '''
 # which dataset/feature(s) to run
-datasets = ["politifact"]
-features = ["profile"]
+datasets = ["gossipcop"]
+features = ["content"]
 
 # How many groups exclude is split into for gradual removal
 # 1 excludes all at once, 2 excludes half then all, 3 excludes 1/3 then 2/3 then all, etc

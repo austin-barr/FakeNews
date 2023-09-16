@@ -22,7 +22,7 @@ This project was done in a Windows environment on a system with an NVIDIA GPU, s
 
 1. The GNN models use NVIDIA's CUDA to utilize your GPU for increased speed. I used CUDA 11.7; the installer for CUDA can be downloaded from [here](https://developer.nvidia.com/cuda-11-7-0-download-archive?target_os=Windows&target_arch=x86_64&target_version=10&target_type=exe_local).
 
-    This code requires `Python>=3.6`, `PyTorch>=1.6`, and `PyTorch-Geometric>=1.6.1` to run. PyTorch must be installed with support for the your version of CUDA in order to use your GPU.
+    This code requires `Python>=3.6`, `PyTorch>=1.6`, and `PyTorch-Geometric>=1.6.1` to run. PyTorch must be installed with support for your version of CUDA in order to use your GPU. I would recommend using [Python 3.9](https://www.python.org/downloads/release/python-390/), which is what I used since I had trouble with 3.11.
 
 2. PyTorch can be installed through pip with this command. See [PyTorch's installation instructions](https://pytorch.org/get-started/locally/).
 

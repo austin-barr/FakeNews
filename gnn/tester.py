@@ -1,4 +1,7 @@
 import numpy as np
+import warnings
+# Ignore FutureWarnings from seaborn
+warnings.simplefilter(action='ignore', category=FutureWarning)
 
 from utils.graph_helper import GraphHelper
 from utils.run_helper import RunAnalyzer

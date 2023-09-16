@@ -309,7 +309,7 @@ class RunAnalyzer():
         plt.ylabel(y_label)
         
         if save:
-            plt.savefig(f'{root}.{file_type}')
+            plt.savefig(f'{root}/{feature}.{file_type}')
         
         plt.show()
         
@@ -322,7 +322,7 @@ class RunAnalyzer():
         plt.ylabel(y_label)
         
         if save:
-            plt.savefig(f'{root}_by_slice.{file_type}')
+            plt.savefig(f'{root}/{feature}_by_slice.{file_type}')
         
         plt.show()
         

@@ -92,9 +92,6 @@ GNN-FakeNews (Project this code is modifed from): [GitHub](https://github.com/sa
 FakeNewsNet (Original dataset that GNN-FakeNews's data is based on): [GitHub](https://github.com/KaiDMML/FakeNewsNet) [Paper](https://arxiv.org/pdf/1809.01286.pdf)
 
 Analysis of FakeNewsNet dataset (Used to identify graph features to look at): [Paper](https://arxiv.org/pdf/1903.09196.pdf)
-
-
-
 ## Misc
 ### Domino explore
 [Domino's GUI/explore feature](https://domino-slice.readthedocs.io/en/latest/apidocs/gui.html) works best in the [original Jupyter notebook](https://jupyter.org/install#jupyter-notebook), which can be installed and run with:
@@ -104,10 +101,12 @@ jupyter notebook
 ```
 In my experience it worked fine by running an .py file in VSCode's Interactive Window with the Jupyter extension installed.
 ### Notes about code
-The early stopping I have implemented will break if the validation loss never falls below its starting value, which does happen sometimes if a model has a particularly bad run. This could be fixed by changing the epoch it picks if that happens, or just turn off early stopping by setting early_stopping to False for that model.
-
-Any graphs made are shown while the code is running. If you're working in an environment where this pauses execution of the program, you should probably change how the graphs are displayed.
+Any graphs made are shown while the code is running. I ran these in Spyder so it wasn't an issue, but if you're working in an environment where the graphs pause execution of the program, you should probably change how the graphs are displayed.
 
 The train/val/test splits for these models is set to 20/10/70, which is how the authors had it. Not sure why that is. Changing this to a 70/10/20 split did seem to improve performance a bit when I tested it.
 
-I left the argparsers in each model even though they aren't used with the way I have this set up. I know this doesn't make sense, it was just easier to leave it how it was. Sorry about that.
+The early stopping I've implemented will use the model at the first training epoch if the validation loss never falls below its starting value, which does happen sometimes if a model has a particularly bad run. This could be fixed by changing the epoch that early stopping picks if that happens, or just turn off early stopping by setting early_stopping to False for that model.
+
+I left the argparsers in each model even though they aren't used with the way I have this set up. I know this doesn't make sense, it was just easier to leave it how it was.
+
+I mostly worked with `gnn.py` so that I didn't need to try everything on all models all the time. The way this is set up requires copying any changes into all four model files, and I couldn't think of a good way to eliminate that. I've added everything from that model to the other three models, but I didn't work with those as much.
